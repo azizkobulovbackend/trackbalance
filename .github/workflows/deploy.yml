@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: false
           check-latest: false
-          token: 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
+          token: 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 
 
       - name: Install dependencies
         run: npm install
