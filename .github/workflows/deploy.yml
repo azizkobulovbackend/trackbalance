@@ -33,6 +33,9 @@ jobs:
       - name: Stop current PM2 process by name
         run: pm2 stop track_balance || true
 
+      - name: Stop current PM2 process by name
+        run: pm2 restart track_balance || true
+
       - name: Start new PM2 process with name
         run: pm2 start dist/main.js --name track_balance
 
