@@ -1,0 +1,40 @@
+name: Nest.js CI/CD
+
+on:
+push:
+branches:
+— main
+
+jobs:
+build:
+
+runs-on: self-hosted
+
+strategy:
+matrix:
+node-version: [20.x]
+
+steps:
+— name: Check out the repository
+uses: actions/checkout@v2
+
+- name: Set up Nest.js ${{ matrix.node-version }}
+uses: actions/setup-node@v2
+with:
+node-version: ${{ matrix.node-version }}
+cache: ‘npm’
+
+- name: Install dependencies
+run: npm install
+
+- name: Build the project
+run: npm build
+
+- name: Stop current PM2 process by name
+run: pm2 stop track_balance || true
+
+- name: Start new PM2 process with name
+run: pm2 start dist/main.js — name track_balance
+
+- name: Save PM2 process list
+run: pm2 save
