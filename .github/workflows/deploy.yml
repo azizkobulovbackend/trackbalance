@@ -21,9 +21,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'false'
+          cache: false
           check-latest: false
-          token: ***
+          token: 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
 
       - name: Install dependencies
         run: npm install
