@@ -31,10 +31,13 @@ jobs:
         run: npm run build
 
       - name: Stop current PM2 process by name
-        run: pm2 stop track_balance || true
+        run: pm2 stop trackbalance || true
 
       - name: Stop current PM2 process by name
-        run: pm2 restart track_balance || true
+        run: pm2 restart trackbalance || true
+
+      - name: Start the application with PM2
+      - run: pm2 startup
 
       - name: Save PM2 process list
         run: pm2 save
