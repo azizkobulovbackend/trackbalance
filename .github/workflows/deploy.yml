@@ -42,7 +42,7 @@ jobs:
         run: pm2 delete trackbalance || true
 
       - name: Start new PM2 process
-        run: pm2 start dist/main --name trackbalance
+        run: pm2 start dist/main.js --name trackbalance
 
       - name: Save PM2 process list
         run: pm2 save
